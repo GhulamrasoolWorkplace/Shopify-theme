@@ -1,0 +1,168 @@
+{%- style -%}
+  .newsletter {
+    padding: 5rem 0;
+    text-align: center;
+  }
+
+  .newsletter__header {
+    max-width: 60rem;
+    margin: 0 auto 4rem;
+  }
+
+  .newsletter__heading {
+    font-size: 2.4rem;
+    margin: 0 0 1.5rem;
+  }
+
+  .newsletter__text {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .newsletter__form {
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  .newsletter__form-wrapper {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .newsletter__input {
+    flex: 1;
+    padding: 1.2rem;
+    border: 1px solid var(--color-base-text);
+    border-radius: var(--buttons-radius);
+    font-size: 1.4rem;
+  }
+
+  .newsletter__button {
+    padding: 1.2rem 3rem;
+    background-color: var(--color-base-accent-1);
+    color: var(--color-base-solid-button-labels);
+    border: none;
+    border-radius: var(--buttons-radius);
+    font-weight: var(--font-body-weight-bold);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .newsletter__button:hover {
+    opacity: 0.9;
+  }
+
+  @media screen and (max-width: 749px) {
+    .newsletter__form-wrapper {
+      flex-direction: column;
+    }
+  }
+{%- endstyle -%}
+
+<div class="newsletter color-{{ section.settings.color_scheme }}">
+  <div class="container">
+    <div class="newsletter__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="newsletter__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      
+      {%- if section.settings.text != blank -%}
+        <div class="newsletter__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="newsletter__form">
+      {%- form 'customer', class: 'newsletter-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        
+        <div class="newsletter__form-wrapper">
+          <input
+            type="email"
+            name="contact[email]"
+            class="newsletter__input"
+            value="{{ form.email }}"
+            aria-required="true"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            {% if form.errors %}
+              autofocus
+              aria-invalid="true"
+              aria-describedby="Newsletter-error-{{ section.id }}"
+            {% elsif form.posted_successfully? %}
+              aria-describedby="Newsletter-success-{{ section.id }}"
+            {% endif %}
+            placeholder="Enter your email"
+            required
+          >
+          
+          <button type="submit" class="newsletter__button" name="commit">
+            {{ section.settings.button_label }}
+          </button>
+        </div>
+
+        {%- if form.errors -%}
+          <small class="newsletter-form__message form__message" id="Newsletter-error-{{ section.id }}">
+            {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+          </small>
+        {%- endif -%}
+
+        {%- if form.posted_successfully? -%}
+          <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="Newsletter-success-{{ section.id }}" tabindex="-1" autofocus>
+            {{ 'newsletter.success' | t }}
+          </h3>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Subscribe to our newsletter"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Be the first to know about new collections and exclusive offers.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Subscribe"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        }
+      ],
+      "default": "background-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %} 

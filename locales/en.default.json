@@ -1,0 +1,229 @@
+{
+  "general": {
+    "search": {
+      "placeholder": "Search",
+      "no_results": "No results found",
+      "results_for": "Results for \"{{ terms }}\""
+    },
+    "cart": {
+      "title": "Cart",
+      "empty": "Your cart is empty",
+      "items": "{{ count }} item",
+      "items_plural": "{{ count }} items",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "continue_shopping": "Continue shopping",
+      "remove": "Remove",
+      "quantity": "Quantity",
+      "update": "Update",
+      "note": "Add a note to your order",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout"
+    },
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "vendor": "Vendor",
+      "price": "Price",
+      "compare_at_price": "Compare at price",
+      "description": "Description",
+      "share": "Share",
+      "view_details": "View details"
+    },
+    "collection": {
+      "filter": "Filter",
+      "sort": "Sort",
+      "clear_all": "Clear all",
+      "no_products": "No products found",
+      "products": "products",
+      "view_all": "View all"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {{ current }} of {{ total }}"
+    },
+    "newsletter": {
+      "title": "Subscribe to our emails",
+      "email": "Email",
+      "submit": "Subscribe",
+      "success": "Thanks for subscribing",
+      "error": "Please enter a valid email"
+    },
+    "social": {
+      "share_on_facebook": "Share on Facebook",
+      "share_on_twitter": "Share on Twitter",
+      "share_on_pinterest": "Share on Pinterest",
+      "copy_link": "Copy link",
+      "links": {
+        "twitter": "Twitter",
+        "facebook": "Facebook",
+        "pinterest": "Pinterest",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "tumblr": "Tumblr",
+        "snapchat": "Snapchat",
+        "youtube": "YouTube",
+        "vimeo": "Vimeo"
+      }
+    },
+    "footer": {
+      "payment_methods": "Payment methods",
+      "copyright": "© {{ year }} {{ shop.name }}. All rights reserved.",
+      "powered_by": "Powered by Shopify"
+    },
+    "errors": {
+      "general": "Something went wrong",
+      "form": "Please check your entries and try again"
+    }
+  },
+  "sections": {
+    "cart": {
+      "cart_error": "There was an error while updating your cart. Please try again.",
+      "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart."
+    },
+    "slideshow": {
+      "pause_slideshow": "Pause slideshow",
+      "play_slideshow": "Play slideshow"
+    },
+    "header": {
+      "menu": "Menu",
+      "announcement": "Announcement",
+      "settings": {
+        "logo": {
+          "label": "Logo image"
+        },
+        "logo_width": {
+          "label": "Logo width",
+          "unit": "px"
+        },
+        "logo_position": {
+          "label": "Logo position",
+          "info": "Select where the logo should appear in the header",
+          "options__1": {
+            "label": "Middle left"
+          },
+          "options__2": {
+            "label": "Top left"
+          },
+          "options__3": {
+            "label": "Top center"
+          }
+        },
+        "menu": {
+          "label": "Menu"
+        },
+        "menu_type_desktop": {
+          "label": "Desktop menu type",
+          "info": "Select how the menu should appear on desktop",
+          "options__1": {
+            "label": "Dropdown"
+          },
+          "options__2": {
+            "label": "Mega menu"
+          }
+        },
+        "show_line_separator": {
+          "label": "Show line separator"
+        },
+        "enable_sticky_header": {
+          "label": "Enable sticky header",
+          "info": "Keep the header visible when scrolling down the page"
+        }
+      }
+    },
+    "announcement-bar": {
+      "name": "Announcement bar",
+      "blocks": {
+        "announcement": {
+          "name": "Announcement",
+          "settings": {
+            "text": {
+              "label": "Announcement text"
+            },
+            "text_alignment": {
+              "label": "Text alignment",
+              "options__1": {
+                "label": "Left"
+              },
+              "options__2": {
+                "label": "Center"
+              },
+              "options__3": {
+                "label": "Right"
+              }
+            },
+            "link": {
+              "label": "Link"
+            }
+          }
+        }
+      }
+    },
+    "footer": {
+      "name": "Footer",
+      "payment": "Payment methods",
+      "blocks": {
+        "link_list": {
+          "name": "Menu",
+          "settings": {
+            "heading": {
+              "label": "Heading"
+            },
+            "menu": {
+              "label": "Menu",
+              "info": "Select a menu to show in the footer"
+            }
+          }
+        },
+        "text": {
+          "name": "Text"
+        }
+      }
+    }
+  },
+  "products": {
+    "product": {
+      "media": {
+        "image_available": "Image {{ index }}"
+      }
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "refresh_page": "Refresh page",
+    "close": "Close",
+    "loading": "Loading..."
+  },
+  "localization": {
+    "country_label": "Country/Region",
+    "language_label": "Language",
+    "update_country": "Update country",
+    "update_language": "Update language"
+  },
+  "customer": {
+    "account_fallback": "Account",
+    "log_in": "Log in"
+  },
+  "all": {
+    "colors": {
+      "label": "Color scheme",
+      "accent_1": {
+        "label": "Accent 1"
+      },
+      "accent_2": {
+        "label": "Accent 2"
+      },
+      "background_1": {
+        "label": "Background 1"
+      },
+      "background_2": {
+        "label": "Background 2"
+      },
+      "inverse": {
+        "label": "Inverse"
+      }
+    }
+  }
+} 

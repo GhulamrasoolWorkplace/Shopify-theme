@@ -1,0 +1,70 @@
+{
+  "general": {
+    "search": {
+      "placeholder": "खोजें",
+      "no_results": "कोई परिणाम नहीं मिला",
+      "results_for": "\"{{ terms }}\" के लिए परिणाम"
+    },
+    "cart": {
+      "title": "कार्ट",
+      "empty": "आपका कार्ट खाली है",
+      "items": "{{ count }} वस्तु",
+      "items_plural": "{{ count }} वस्तुएं",
+      "subtotal": "कुल योग",
+      "checkout": "चेकआउट",
+      "continue_shopping": "खरीदारी जारी रखें",
+      "remove": "हटाएं",
+      "quantity": "मात्रा",
+      "update": "अपडेट करें",
+      "note": "अपने ऑर्डर में नोट जोड़ें",
+      "taxes_and_shipping_at_checkout": "चेकआउट पर टैक्स और शिपिंग की गणना की जाएगी"
+    },
+    "product": {
+      "add_to_cart": "कार्ट में जोड़ें",
+      "sold_out": "बिक चुका है",
+      "unavailable": "उपलब्ध नहीं",
+      "quantity": "मात्रा",
+      "vendor": "विक्रेता",
+      "price": "मूल्य",
+      "compare_at_price": "तुलना मूल्य",
+      "description": "विवरण",
+      "share": "साझा करें",
+      "view_details": "विवरण देखें"
+    },
+    "collection": {
+      "filter": "फ़िल्टर",
+      "sort": "क्रमबद्ध करें",
+      "clear_all": "सभी साफ़ करें",
+      "no_products": "कोई उत्पाद नहीं मिला",
+      "products": "उत्पाद",
+      "view_all": "सभी देखें"
+    },
+    "pagination": {
+      "previous": "पिछला",
+      "next": "अगला",
+      "page": "पृष्ठ {{ current }} में से {{ total }}"
+    },
+    "newsletter": {
+      "title": "हमारे ईमेल की सदस्यता लें",
+      "email": "ईमेल",
+      "submit": "सदस्यता लें",
+      "success": "सदस्यता लेने के लिए धन्यवाद",
+      "error": "कृपया एक वैध ईमेल दर्ज करें"
+    },
+    "social": {
+      "share_on_facebook": "फेसबुक पर साझा करें",
+      "share_on_twitter": "ट्विटर पर साझा करें",
+      "share_on_pinterest": "पिंटरेस्ट पर साझा करें",
+      "copy_link": "लिंक कॉपी करें"
+    },
+    "footer": {
+      "payment_methods": "भुगतान के तरीके",
+      "copyright": "© {{ year }} {{ shop.name }}. सर्वाधिकार सुरक्षित।",
+      "powered_by": "Shopify द्वारा संचालित"
+    },
+    "errors": {
+      "general": "कुछ गलत हो गया",
+      "form": "कृपया अपनी प्रविष्टियों की जांच करें और पुनः प्रयास करें"
+    }
+  }
+} 

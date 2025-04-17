@@ -1,0 +1,276 @@
+{%- style -%}
+  .featured-product {
+    padding: 5rem 0;
+  }
+
+  .featured-product__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .featured-product__media {
+    position: relative;
+  }
+
+  .featured-product__media-wrapper {
+    position: relative;
+    padding-top: 100%;
+  }
+
+  .featured-product__media-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .featured-product__media-secondary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .featured-product__media:hover .featured-product__media-secondary {
+    opacity: 1;
+  }
+
+  .featured-product__info {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .featured-product__vendor {
+    font-size: 1.2rem;
+    color: var(--color-base-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .featured-product__title {
+    font-size: 2.4rem;
+    margin: 0 0 1rem;
+  }
+
+  .featured-product__price {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .featured-product__price--compare {
+    text-decoration: line-through;
+    opacity: 0.7;
+    margin-right: 1rem;
+  }
+
+  .featured-product__variant-picker {
+    margin-bottom: 2rem;
+  }
+
+  .featured-product__variant-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .featured-product__variant-option {
+    position: relative;
+  }
+
+  .featured-product__variant-option input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .featured-product__variant-option label {
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-base-text);
+    border-radius: var(--buttons-radius);
+    cursor: pointer;
+  }
+
+  .featured-product__variant-option input:checked + label {
+    background-color: var(--color-base-accent-1);
+    color: var(--color-base-solid-button-labels);
+    border-color: var(--color-base-accent-1);
+  }
+
+  .featured-product__quantity {
+    margin-bottom: 2rem;
+  }
+
+  .featured-product__quantity-input {
+    width: 10rem;
+    padding: 1rem;
+    border: 1px solid var(--color-base-text);
+    border-radius: var(--buttons-radius);
+  }
+
+  .featured-product__add-to-cart {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background-color: var(--color-base-accent-1);
+    color: var(--color-base-solid-button-labels);
+    text-decoration: none;
+    border-radius: var(--buttons-radius);
+    font-weight: var(--font-body-weight-bold);
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+  }
+
+  .featured-product__add-to-cart:hover {
+    opacity: 0.9;
+  }
+
+  @media screen and (max-width: 749px) {
+    .featured-product__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="featured-product color-{{ section.settings.color_scheme }}">
+  <div class="container">
+    {%- assign product = all_products[section.settings.product] -%}
+    {%- if product != blank -%}
+      <div class="featured-product__grid">
+        <div class="featured-product__media">
+          <div class="featured-product__media-wrapper">
+            {{ product.featured_image | image_url: width: 1000 | image_tag:
+              loading: 'eager',
+              class: 'featured-product__media-item'
+            }}
+            
+            {%- if section.settings.show_secondary_image and product.images[1] != blank -%}
+              {{ product.images[1] | image_url: width: 1000 | image_tag:
+                loading: 'lazy',
+                class: 'featured-product__media-secondary'
+              }}
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="featured-product__info">
+          {%- if section.settings.show_vendor -%}
+            <div class="featured-product__vendor">{{ product.vendor }}</div>
+          {%- endif -%}
+          
+          <h2 class="featured-product__title">{{ product.title }}</h2>
+          
+          <div class="featured-product__price">
+            {%- if product.compare_at_price > product.price -%}
+              <span class="featured-product__price--compare">
+                {{ product.compare_at_price | money }}
+              </span>
+            {%- endif -%}
+            {{ product.price | money }}
+          </div>
+
+          {%- if product.variants.size > 1 -%}
+            <div class="featured-product__variant-picker">
+              {%- for option in product.options_with_values -%}
+                <div class="featured-product__variant-options">
+                  {%- for value in option.values -%}
+                    <div class="featured-product__variant-option">
+                      <input type="radio" 
+                        id="Option-{{ section.id }}-{{ forloop.parentloop.index0 }}-{{ forloop.index0 }}"
+                        name="option-{{ forloop.parentloop.index0 }}"
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}checked{% endif %}
+                      >
+                      <label for="Option-{{ section.id }}-{{ forloop.parentloop.index0 }}-{{ forloop.index0 }}">
+                        {{ value }}
+                      </label>
+                    </div>
+                  {%- endfor -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          <div class="featured-product__quantity">
+            <input type="number" 
+              class="featured-product__quantity-input"
+              name="quantity"
+              value="1"
+              min="1"
+            >
+          </div>
+
+          <button type="button" class="featured-product__add-to-cart">
+            Add to cart
+          </button>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured product",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "label": "Show secondary image on hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show rating",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_info",
+      "label": "Enable sticky info",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        }
+      ],
+      "default": "background-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured product"
+    }
+  ]
+}
+{% endschema %} 
