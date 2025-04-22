@@ -1,115 +1,56 @@
-{% comment %}
-  Step 1: Create a map of trigger items and their corresponding mega menus.
-  Liquid doesn't have native maps, so we use a string hack: "title1:menu1;title2:menu2;"
-{% endcomment %}
-{% assign trigger_map = '' %}
+{% render 'header-main-menu' %}
 
 {% for block in section.blocks %}
-  {% if block.settings.trigger_item != blank and block.settings.second_menu != blank %}
-    {% assign trigger_map = trigger_map | append: block.settings.trigger_item | append: ':' | append: block.settings.second_menu | append: ';' %}
-  {% endif %}
+  <div
+    class="mega-menu fixed-menu"
+    style="display: none;"
+    data-menu-for="{{ block.settings.trigger_link | escape }}"
+  >
+    <ul>
+      {% assign submenu = linklists[block.settings.submenu] %}
+      {% for sublink in submenu.links %}
+        <li><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endfor %}
 
-<header>
-  <nav class="main-menu">
-    {% assign main_menu = linklists.main-menu %}
-    
-    {% if main_menu.links.size > 0 %}
-      <ul>
-        {% for link in main_menu.links %}
-          <li class="menu-item">
-            <a href="{{ link.url }}">{{ link.title }}</a>
-
-            {% comment %}
-              Step 2: Extract the corresponding second menu from trigger_map
-            {% endcomment %}
-            {% assign current_title = link.title | strip %}
-            {% if trigger_map contains current_title %}
-              {% assign split_map = trigger_map | split: ';' %}
-              {% for pair in split_map %}
-                {% assign parts = pair | split: ':' %}
-                {% if parts[0] == current_title %}
-                  {% assign second_menu_handle = parts[1] %}
-                  {% assign second_menu = linklists[second_menu_handle] %}
-                  {% if second_menu.links.size > 0 %}
-                    <div class="second-menu">
-                      <ul>
-                        {% for sublink in second_menu.links %}
-                          <li><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
-                        {% endfor %}
-                      </ul>
-                    </div>
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-
-          </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </nav>
-</header>
-
 <style>
-  .second-menu {
-    display: none;
-    position: absolute;
-    background-color: white;
-    padding: 15px;
-    z-index: 10;
-    min-width: 200px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-
-  .menu-item:hover .second-menu {
-    display: block;
-  }
-
-  .menu-item {
-    position: relative;
-  }
-
-  .main-menu ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    padding: 0;
-  }
-
-  .main-menu a {
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
+  .fixed-menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    background: white;
+    width: 100%;
+    z-index: 999;
   }
 </style>
 
-{% schema %}
-{
-  "name": "Header with Mega Menu",
-  "blocks": [
-    {
-      "type": "mega_menu_block",
-      "name": "Mega Menu Item",
-      "settings": [
-        {
-          "type": "text",
-          "id": "trigger_item",
-          "label": "Main Menu Item Name (exact match)"
-        },
-        {
-          "type": "link_list",
-          "id": "second_menu",
-          "label": "Select Mega Menu"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Header with Mega Menu",
-      "category": "Header"
-    }
-  ]
-}
-{% endschema %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const items = document.querySelectorAll(".menu-item");
+
+    items.forEach((item) => {
+      const title = item.getAttribute("data-title");
+      const megaMenu = document.querySelector(`[data-menu-for='${title}']`);
+
+      if (megaMenu) {
+        item.addEventListener("mouseenter", () => {
+          megaMenu.style.display = "block";
+        });
+
+        item.addEventListener("mouseleave", () => {
+          megaMenu.style.display = "none";
+        });
+
+        megaMenu.addEventListener("mouseenter", () => {
+          megaMenu.style.display = "block";
+        });
+
+        megaMenu.addEventListener("mouseleave", () => {
+          megaMenu.style.display = "none";
+        });
+      }
+    });
+  });
+</script>
