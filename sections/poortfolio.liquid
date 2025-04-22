@@ -1,11 +1,18 @@
 <section>
   <h2>My Portfolio</h2>
   <div class="portfolio-grid">
-    {% for portfolio_list in section.settings.portfolio_selector %}
+    {% for item in section.settings.portfolio_selector %}
+      {% assign portfolio_list = item.value %}
+      {% assign portfolio = portfolio_list.portfolio.value %}
+
       <div class="portfolio-card">
-        <img src="{{ portfolio_list.featured_image | file_url }}" alt="{{ portfolio.title.value }}" width="100%" height="100%">
-        <h3>{{ portfolio_list.title.value }}</h3>
-        <p>Client: {{ portfolio_list.clint_name.value }}</p>
+        <img 
+          src="{{ portfolio.featured_image | file_url }}" 
+          alt="{{ portfolio.title }}" 
+          width="100%" 
+          height="100%">
+        <h3>{{ portfolio.title }}</h3>
+        <p>Client: {{ portfolio.client_name }}</p>
       </div>
     {% endfor %}
   </div>
@@ -17,7 +24,7 @@
   "settings": [
     {
       "type": "metaobject_list",
-      "label": "Select Portfolio Items",
+      "label": "Select Portfolio Lists",
       "id": "portfolio_selector",
       "metaobject_type": "portfolio_list"
     }
