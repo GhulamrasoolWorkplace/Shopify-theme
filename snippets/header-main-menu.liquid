@@ -3,8 +3,8 @@
 <nav class="main-menu">
   <ul>
     {% for link in linklists[menu].links %}
-      <li>
-        <a href="{{ link.url }}" class="menu-item" data-title="{{ link.title | escape }}">{{ link.title }}</a>
+      <li class="menu-item" data-title="{{ link.title | escape }}">
+        <a href="{{ link.url }}">{{ link.title }}</a>
       </li>
     {% endfor %}
   </ul>
