@@ -502,20 +502,22 @@ header-drawer{grid-area:menu-icon;}
         </a>
       {%- endif -%}
 
-{%- for block in section.blocks -%}
-  {%- case block.type -%}
-    {%- when 'custom-mega-block' -%}
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'submenu_block' %}
       <div
-        class="custom-mega-block"
-        data-target-title="{{ block.settings.target_title | escape }}"
+        class="mega-menu absolute-menu"
         style="display: none;"
+        data-menu-for="{{ block.settings.trigger_link | escape }}"
       >
-        {{ block.settings.block_content }}
+        <ul>
+          {% for mainlink in linklists[block.settings.submenu].links %}
+            <li><a href="{{ mainlink.url }}">{{ mainlink.title }}</a></li>
+          {% endfor %}
+        </ul>
       </div>
-    {%- when '@app' -%}
-      {% render block %}
-  {%- endcase -%}
-{%- endfor -%}
+  {% endcase %}
+{% endfor %}
 
 
 
