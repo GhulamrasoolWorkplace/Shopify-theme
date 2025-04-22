@@ -1,4 +1,4 @@
-{%- liquid
+{% comment %} {%- liquid
   assign logo_width = section.settings.logo_width
   assign logo_height = logo_width | divided_by: section.settings.logo_ratio
   assign logo_alt = section.settings.logo.alt | default: shop.name | escape
@@ -680,4 +680,94 @@
     }
   ]
 }
-{% endschema %} 
+{% endschema %}  {% endcomment %}
+
+
+
+
+
+<header>
+  <nav class="main-menu">
+    {% assign main_menu = linklists.main-menu %}
+
+    {% if main_menu.links.size > 0 %}
+      <ul>
+        {% for link in main_menu.links %}
+          <li class="menu-item">
+            <a href="{{ link.url }}">{{ link.title }}</a>
+
+            {% comment %} Check if any block matches this menu item {% endcomment %}
+            {% for block in section.blocks %}
+              {% if block.settings.trigger_item == link.title %}
+                {% assign second_menu = linklists[block.settings.second_menu] %}
+                {% if second_menu.links.size > 0 %}
+                  <div class="second-menu">
+                    <ul>
+                      {% for sublink in second_menu.links %}
+                        <li><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </nav>
+</header>
+
+<style>
+  .second-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 15px;
+    z-index: 10;
+  }
+
+  .menu-item:hover .second-menu {
+    display: block;
+  }
+
+  .menu-item {
+    position: relative;
+  }
+
+  .main-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "blocks": [
+    {
+      "type": "mega_menu_block",
+      "name": "Mega Menu Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "trigger_item",
+          "label": "Main Menu Item Name to Trigger"
+        },
+        {
+          "type": "link_list",
+          "id": "second_menu",
+          "label": "Second Menu to Display"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header with Dynamic Mega Menu",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %}
