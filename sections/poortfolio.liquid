@@ -5,7 +5,7 @@
   <div class="portfolio-grid">
     {% for item in portfolio_items %}
       <div class="portfolio-card">
-        <img src="{{ item.featured_image.value | file_url }}" alt="{{ item.title.value }}" width="100%" height="100%">
+        <img src="{{ item.featured_image | file_url }}" alt="{{ item.title.value }}" width="100%" height="100%">
         <h3>{{ item.title.value }}</h3>
         <p>Client: {{ item.clint_name.value }}</p>
       </div>
