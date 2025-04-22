@@ -32,18 +32,20 @@
     "header": {
       "type": "header",
       "blocks": {
-        "mega_menu_block_U3RCUA": {
-          "type": "mega_menu_block",
+        "submenu_block_Xq9PKh": {
+          "type": "submenu_block",
           "settings": {
-            "trigger_item": "Contact",
-            "second_menu": "customer-account-main-menu"
+            "trigger_link": "contact",
+            "submenu": "customer-account-main-menu"
           }
         }
       },
       "block_order": [
-        "mega_menu_block_U3RCUA"
+        "submenu_block_Xq9PKh"
       ],
-      "settings": {}
+      "settings": {
+        "main_menu": "main-menu"
+      }
     }
   },
   "order": [
