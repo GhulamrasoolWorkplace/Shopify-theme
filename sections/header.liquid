@@ -689,13 +689,13 @@
 <header>
   <nav class="main-menu">
     {% assign main_menu = linklists.main-menu %}
-    {% assign linktitle = link.title %}
+    
     {% if main_menu.links.size > 0 %}
       <ul>
         {% for link in main_menu.links %}
           <li class="menu-item">
             <a href="{{ link.url }}">{{ link.title }}</a>
-
+            {% assign linktitle = link.title %}
             {% comment %} Check if any block matches this menu item {% endcomment %}
           </li>
         {% endfor %}
