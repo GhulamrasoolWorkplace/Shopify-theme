@@ -3,18 +3,17 @@
 {% for block in section.blocks %}
   {% case block.type %}
     {% when 'submenu_block' %}
-  <div
-    class="mega-menu absolute-menu"
-    style="display: none;"
-    data-menu-for="{{ block.settings.trigger_link | escape }}"
-  >
-    <ul>
-      {% assign submenu = linklists[block.settings.submenu] %}
-      {% for sublink in submenu.links %}
-        <li><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
+      <div
+        class="mega-menu absolute-menu"
+        style="display: none;"
+        data-menu-for="{{ block.settings.trigger_link | escape }}"
+      >
+        <ul>
+          {% for sublink in linklists[block.settings.submenu].links %}
+            <li><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
   {% endcase %}
 {% endfor %}
 
