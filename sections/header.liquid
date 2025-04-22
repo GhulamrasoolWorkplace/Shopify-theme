@@ -697,6 +697,10 @@
             <a href="{{ link.url }}">{{ link.title }}</a>
 
             {% comment %} Check if any block matches this menu item {% endcomment %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
             {% for block in section.blocks %}
               {% if block.settings.trigger_item == link.title %}
                 {% assign second_menu = linklists[block.settings.second_menu] %}
@@ -711,10 +715,6 @@
                 {% endif %}
               {% endif %}
             {% endfor %}
-          </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
   </nav>
 </header>
 
