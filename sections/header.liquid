@@ -54,3 +54,38 @@
     });
   });
 </script>
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Main Menu"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "submenu_block",
+      "name": "Submenu Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "trigger_link",
+          "label": "Main Menu Link Title (exact match)"
+        },
+        {
+          "type": "link_list",
+          "id": "submenu",
+          "label": "Submenu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header with Mega Menu"
+    }
+  ]
+}
+{% endschema %}
