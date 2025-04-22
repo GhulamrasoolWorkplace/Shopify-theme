@@ -2,7 +2,7 @@
 
 {% for block in section.blocks %}
   <div
-    class="mega-menu fixed-menu"
+    class="mega-menu absolute-menu"
     style="display: none;"
     data-menu-for="{{ block.settings.trigger_link | escape }}"
   >
@@ -16,44 +16,31 @@
 {% endfor %}
 
 <style>
-  .fixed-menu {
-    position: fixed;
-    top: 80px;
+  .absolute-menu {
+    position: absolute;
+    top: 100%;
     left: 0;
     background: white;
     width: 100%;
     z-index: 999;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .absolute-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .absolute-menu li a {
+    text-decoration: none;
+    color: black;
   }
 </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const items = document.querySelectorAll(".menu-item");
-
-    items.forEach((item) => {
-      const title = item.getAttribute("data-title");
-      const megaMenu = document.querySelector(`[data-menu-for='${title}']`);
-
-      if (megaMenu) {
-        item.addEventListener("mouseenter", () => {
-          megaMenu.style.display = "block";
-        });
-
-        item.addEventListener("mouseleave", () => {
-          megaMenu.style.display = "none";
-        });
-
-        megaMenu.addEventListener("mouseenter", () => {
-          megaMenu.style.display = "block";
-        });
-
-        megaMenu.addEventListener("mouseleave", () => {
-          megaMenu.style.display = "none";
-        });
-      }
-    });
-  });
-</script>
 {% schema %}
 {
   "name": "Header",
