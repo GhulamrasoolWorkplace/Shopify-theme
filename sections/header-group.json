@@ -35,7 +35,7 @@
         "mega_menu_block_U3RCUA": {
           "type": "mega_menu_block",
           "settings": {
-            "trigger_item": "contact",
+            "trigger_item": "Contact",
             "second_menu": "customer-account-main-menu"
           }
         }
