@@ -1,20 +1,22 @@
 <section>
   <h2>My Portfolio</h2>
   <div class="portfolio-grid">
-    {% for portfolio in section.settings.portfolio_selector %}
-
-      <div class="portfolio-card">
-        <img 
-          src="{{ portfolio.featured_image | file_url }}" 
-          alt="{{ portfolio.title }}" 
-          width="100%" 
-          height="100%">
-        <h3>{{ portfolio.title }}</h3>
-        <p>Client: {{ portfolio.client_name }}</p>
-      </div>
+    {% for portfolio_list in section.settings.portfolio_selector %}
+      {% for portfolio in portfolio_list.portfolio.value %}
+        <div class="portfolio-card">
+          <img 
+            src="{{ portfolio.featured_image | file_url }}" 
+            alt="{{ portfolio.title }}" 
+            width="100%" 
+            height="100%">
+          <h3>{{ portfolio.title }}</h3>
+          <p>Client: {{ portfolio.client_name }}</p>
+        </div>
+      {% endfor %}
     {% endfor %}
   </div>
 </section>
+
 
 {% schema %}
 {
