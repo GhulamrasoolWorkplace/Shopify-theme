@@ -38,10 +38,18 @@
             "trigger_link": "Home",
             "submenu": "customer-account-main-menu"
           }
+        },
+        "submenu_block_BtR9Mh": {
+          "type": "submenu_block",
+          "settings": {
+            "trigger_link": "Contact",
+            "submenu": "my-personal-menu"
+          }
         }
       },
       "block_order": [
-        "submenu_block_Xq9PKh"
+        "submenu_block_Xq9PKh",
+        "submenu_block_BtR9Mh"
       ],
       "settings": {
         "main_menu": "main-menu"
