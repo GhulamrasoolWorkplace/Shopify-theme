@@ -36,7 +36,7 @@
           "type": "submenu_block",
           "settings": {
             "trigger_link": "Home",
-            "submenu": "my-new-menu"
+            "submenu": "my-personal-menu"
           }
         },
         "submenu_block_BtR9Mh": {
@@ -52,7 +52,7 @@
         "submenu_block_BtR9Mh"
       ],
       "settings": {
-        "main_menu": "main-menu"
+        "menu": "main-menu"
       }
     }
   },
