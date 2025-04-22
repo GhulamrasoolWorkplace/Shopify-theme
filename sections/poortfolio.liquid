@@ -1,4 +1,4 @@
-{% assign portfolio_items = shop.metaobjects.portfolio.values %}
+{% assign portfolio_items = shop.metaobjects.portfolio[settings.portfolio_selector].values %}
 
 <section>
   <h2>My Portfolio</h2>
@@ -12,3 +12,23 @@
     {% endfor %}
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Portfolio Section",
+  "settings": [
+    {
+      "type": "metaobject_list",
+      "label": "Select Portfolio",
+      "id": "portfolio_selector",
+      "metaobject_type": "portfolio"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
