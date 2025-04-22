@@ -97,19 +97,6 @@
 
 
 
-
-
-  {% assign menu = section.settings.main_menu %}
-
-<nav class="main-menu">
-  <ul>
-    {% for link in linklists[menu].links %}
-      <li class="menu-item" data-title="{{ link.title | escape }}">
-        <a href="{{ link.url }}">{{ link.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-</nav>
 <style>
   .menu-item{
     position: relative;
