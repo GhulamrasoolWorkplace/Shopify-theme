@@ -24,7 +24,6 @@
               Step 2: Extract the corresponding second menu from trigger_map
             {% endcomment %}
             {% assign current_title = link.title | strip %}
-            {% assign start_index = trigger_map | split: current_title | size %}
             {% if trigger_map contains current_title %}
               {% assign split_map = trigger_map | split: ';' %}
               {% for pair in split_map %}
