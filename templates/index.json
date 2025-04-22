@@ -8,12 +8,16 @@
  * ------------------------------------------------------------
  */
 {
-"sections": {
-  "poortfolio": {
-    "type": "poortfolio",
-    "settings": {}
-  }
-},  
+  "sections": {
+    "poortfolio": {
+      "type": "poortfolio",
+      "settings": {
+        "portfolio_selector": [
+          "ghulam-rasool"
+        ]
+      }
+    }
+  },
   "order": [
     "poortfolio"
   ]
