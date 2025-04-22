@@ -1,0 +1,14 @@
+{% assign portfolio_items = shop.metaobjects.portfolio_item.values %}
+
+<section>
+  <h2>My Portfolio</h2>
+  <div class="portfolio-grid">
+    {% for item in portfolio_items %}
+      <div class="portfolio-card">
+        <img src="{{ item.featured_image | image_url: 'medium' }}" alt="{{ item.title.value }}" />
+        <h3>{{ item.title.value }}</h3>
+        <p>Client: {{ item.client_name.value }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
