@@ -9,8 +9,8 @@
         data-menu-for="{{ block.settings.trigger_link | escape }}"
       >
         <ul>
-          {% for sublink in linklists[block.settings.submenu].links %}
-            <li><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
+          {% for mainlink in linklists[block.settings.submenu].links %}
+            <li><a href="{{ mainlink.url }}">{{ mainlink.title }}</a></li>
           {% endfor %}
         </ul>
       </div>
