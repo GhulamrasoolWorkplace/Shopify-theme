@@ -9,3 +9,37 @@
     {% endfor %}
   </ul>
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const items = document.querySelectorAll(".menu-item");
+
+    items.forEach((item) => {
+      const title = item.getAttribute("data-title");
+
+      // Find corresponding mega menu from DOM
+      const megaMenu = document.querySelector(`[data-menu-for='${title}']`);
+
+      if (megaMenu) {
+        // Move mega menu inside this menu item as a child
+        item.appendChild(megaMenu);
+
+        item.addEventListener("mouseenter", () => {
+          megaMenu.style.display = "block";
+        });
+
+        item.addEventListener("mouseleave", () => {
+          megaMenu.style.display = "none";
+        });
+
+        megaMenu.addEventListener("mouseenter", () => {
+          megaMenu.style.display = "block";
+        });
+
+        megaMenu.addEventListener("mouseleave", () => {
+          megaMenu.style.display = "none";
+        });
+      }
+    });
+  });
+</script>
