@@ -35,7 +35,7 @@
         "submenu_block_Xq9PKh": {
           "type": "submenu_block",
           "settings": {
-            "trigger_link": "Contact",
+            "trigger_link": "Home",
             "submenu": "customer-account-main-menu"
           }
         }
