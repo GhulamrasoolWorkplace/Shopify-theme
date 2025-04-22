@@ -1,9 +1,7 @@
 <section>
   <h2>My Portfolio</h2>
   <div class="portfolio-grid">
-    {% for item in section.settings.portfolio_selector %}
-      {% assign portfolio_list = item.value %}
-      {% assign portfolio = portfolio_list.portfolio.value %}
+    {% for portfolio in section.settings.portfolio_selector %}
 
       <div class="portfolio-card">
         <img 
