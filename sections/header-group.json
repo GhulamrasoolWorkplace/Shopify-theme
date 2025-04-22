@@ -36,14 +36,14 @@
           "type": "submenu_block",
           "settings": {
             "trigger_link": "Home",
-            "submenu": "customer-account-main-menu"
+            "submenu": "my-new-menu"
           }
         },
         "submenu_block_BtR9Mh": {
           "type": "submenu_block",
           "settings": {
             "trigger_link": "Contact",
-            "submenu": "my-personal-menu"
+            "submenu": "main-menu"
           }
         }
       },
