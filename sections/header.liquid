@@ -689,7 +689,7 @@
 <header>
   <nav class="main-menu">
     {% assign main_menu = linklists.main-menu %}
-
+    {% assign linktitle = link.title %}
     {% if main_menu.links.size > 0 %}
       <ul>
         {% for link in main_menu.links %}
@@ -702,7 +702,7 @@
       </ul>
     {% endif %}
             {% for block in section.blocks %}
-              {% if block.settings.trigger_item == link.title %}
+              {% if block.settings.trigger_item == linktitle %}
                 {% assign second_menu = linklists[block.settings.second_menu] %}
                 {% if second_menu.links.size > 0 %}
                   <div class="second-menu">
