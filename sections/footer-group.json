@@ -1,36 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "Footer group",
   "type": "footer",
   "sections": {
     "footer": {
       "type": "footer",
-      "blocks": {
-        "footer-0": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
-          }
-        },
-        "footer-1": {
-          "type": "text",
-          "settings": {
-            "heading": "About Us",
-            "subtext": "<p>Share store details, promotions, or brand content with your customers.</p>"
-          }
-        }
-      },
-      "block_order": ["footer-0", "footer-1"],
       "settings": {
-        "color_scheme": "background-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true
+        "footer_layout": "layout_2"
       }
     }
   },
-  "order": ["footer"]
-} 
+  "order": [
+    "footer"
+  ]
+}
